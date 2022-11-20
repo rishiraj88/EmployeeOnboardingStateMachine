@@ -12,6 +12,7 @@ import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.StateMachineFactory;
 import org.springframework.statemachine.support.DefaultStateMachineContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.wm.ob.emp.data.Constants.EMPLOYEE;
 import static com.wm.ob.emp.data.Constants.EMPLOYEE_EMAIL_ADDRESS;
@@ -30,28 +31,36 @@ public class EmployeeSmService {
     @Autowired
     private EmployeeDataRepo employeeDataRepo;
 
+    @Transactional
     public StateMachine<EmployeeState,EmployeeEvent>  addEmployee(Employee employee) {
         employeeDataRepo.getEmployees().put(employee.getEmailAddress(), employee);
         stateMachine = initStateMachine(employee.getEmailAddress());
         return stateMachine;
 
     }
+    @Transactional
     public StateMachine<EmployeeState,EmployeeEvent> UpdateEmployee(String emailAddress, EmployeeEvent event) {
         stateMachine = initStateMachine(emailAddress);
         sendEvent(emailAddress,stateMachine,event);
         return stateMachine;
     }
-
+    @Transactional
     public Employee getEmployeeDetails(String emailAddress) {
         return employeeDataRepo.getEmployees().get(emailAddress);
     }
 
+    public StateMachine<EmployeeState,EmployeeEvent> getStateMachine() {
+        return stateMachine;
+    }
+    public void setStateMachine(StateMachine<EmployeeState,EmployeeEvent> stateMachine) {
+        this.stateMachine = stateMachine;
+    }
 
-
+    @Transactional
     public void sendEvent(String emailAddress,StateMachine<EmployeeState,EmployeeEvent> sm, EmployeeEvent employeeEvent) {
         Message message = MessageBuilder.withPayload(employeeEvent)
                 .setHeader(EMPLOYEE_EMAIL_ADDRESS, emailAddress)
-//                .setHeader(EMPLOYEE,employeeDataRepo.getEmployees().get(emailAddress)) //for getting employee details optionally
+                .setHeader(EMPLOYEE,employeeDataRepo.getEmployees().get(emailAddress)) //for getting employee details optionally
                 .build();
         sm.sendEvent(message);
 //        employees.get(sm.getId()).setState();
