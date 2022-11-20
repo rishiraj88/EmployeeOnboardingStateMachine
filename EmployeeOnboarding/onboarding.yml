@@ -1,5 +1,5 @@
 services:
-  employee-onboarding:
+  employeeonboarding:
     image: i50729/employeeonboarding:0.0.1-SNAPSHOT
     ports:
       - 8080:8080
