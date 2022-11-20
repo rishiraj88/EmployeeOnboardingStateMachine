@@ -1,6 +1,5 @@
 package com.wm.ob.emp.entity;
 
-import com.wm.ob.emp.EmployeeState;
 import com.wm.ob.emp.sm.EmployeeState;
 import lombok.*;
 
@@ -10,7 +9,7 @@ import lombok.*;
 @Builder
 @ToString
 public class Employee {
-    String emailAddress; // used as identifier. Enough for simpler system design
+    String emailAddress; // used as identifier. Enough for simpler system designs
     String name;
     String contract;
     int age;
