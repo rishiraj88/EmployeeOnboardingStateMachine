@@ -42,9 +42,9 @@ PUT http://localhost:8080/eob/update?email=e004@email.com&event=BEGIN_CHECK
   - Elaborate OpenAPI documentation
 
 ## Contact Points for Feedback and Help
-rishi.raj.88@gmail.com
-https://www.linkedin.com/in/rishirajopenminds
-https://bio.link/rishiraj49de
-https://github.com/rishiraj88?tab=repositories
-https://twitter.com/RishiRajDevOps
-https://hub.docker.com/repository/docker/i50729/employeeonboarding
+- rishi.raj.88@gmail.com
+- https://www.linkedin.com/in/rishirajopenminds
+- https://bio.link/rishiraj49de
+- https://github.com/rishiraj88?tab=repositories
+- https://twitter.com/RishiRajDevOps
+- https://hub.docker.com/repository/docker/i50729/employeeonboarding
