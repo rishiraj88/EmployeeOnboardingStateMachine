@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.wm</groupId>
-	<artifactId>EmployeeOnboarding</artifactId>
+	<artifactId>employeeonboarding</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>EmployeeOnboarding</name>
+	<name>Employee Onboarding</name>
 	<description>Employee Onboarding with State Machine</description>
 	<properties>
 		<java.version>17</java.version>
