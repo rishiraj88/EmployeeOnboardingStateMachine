@@ -7,6 +7,7 @@ Employee Onboarding with State Machine
 - Spring StateMachine
 - Lombok
 - JUnit 5
+- Docker with docker-compose
 
 ## To Start Docker container
 
