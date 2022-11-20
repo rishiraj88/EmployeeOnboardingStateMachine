@@ -31,7 +31,80 @@ public class EmployeeStateMachineConfig extends EnumStateMachineConfigurerAdapte
     @Override
     public void configure(StateMachineConfigurationConfigurer<EmployeeState, EmployeeEvent> config) throws Exception {
         config.withConfiguration()
+                .listener(listener())
                 .autoStartup(true);
+    }
+
+    private StateMachineListener<EmployeeState, EmployeeEvent> listener() {
+        return new StateMachineListenerAdapter<EmployeeState, EmployeeEvent>() {
+            @Override
+            public void transition(Transition<EmployeeState, EmployeeEvent> transition) {
+                log.info("in listener: transitioning...");
+                try {
+                    log.info("from: " + transition.getSource().getId());
+                    log.info("to: " + transition.getTarget().getId());
+                } catch (Exception e) {
+                    log.info("Exception in transition state data.");
+
+                }
+            }
+            @Override
+            public void eventNotAccepted(Message<EmployeeEvent> event){
+                log.info("event not accepted: " + event);
+            }
+            @Override
+            public void stateChanged(State<EmployeeState, EmployeeEvent> from, State<EmployeeState, EmployeeEvent> to) {
+               try{ log.info("stateChanged from "+from.getId()+" to "+to.getId()); } catch (Exception e) {
+                   log.info("Exception in stateChanged");
+
+               }
+            }
+
+            @Override
+            public void stateEntered(State<EmployeeState, EmployeeEvent> state) {
+                log.info("State entered: "+state.getId());
+            }
+
+            @Override
+            public void stateExited(State<EmployeeState, EmployeeEvent> state) {
+                log.info("State exited: "+state.getId());
+            }
+
+            @Override
+            public void transitionStarted(Transition<EmployeeState, EmployeeEvent> transition) {
+                log.info("Transition started: "//+transition
+                );
+                try {
+                    log.info("from " + transition.getSource().getId() + " to " + transition.getTarget().getId());
+                }catch (Exception e) {log.info("Exception in transitionStarted");
+                    log.info("transition: " +transition);}
+            }
+
+//            @Override public void transitionEnded(Transition<S, E> transition) {           }
+
+//            @Override public void stateMachineStarted(StateMachine<S, E> stateMachine) {            }
+
+            @Override
+            public void stateMachineStopped(StateMachine<EmployeeState, EmployeeEvent> stateMachine) {
+                log.info("State machine stopped: "+stateMachine);
+            }
+
+            @Override
+            public void stateMachineError(StateMachine<EmployeeState, EmployeeEvent> stateMachine, Exception exception) {
+                log.info("State machine error: "+stateMachine);
+                log.info("Exception SME: "+exception);
+            }
+
+            @Override
+            public void extendedStateChanged(Object key, Object value) {
+                log.info("extendedStateChanged.");
+                log.info(""+key+"="+value);
+
+            }
+
+//            @Override public void stateContext(StateContext<S, E> stateContext) {}
+
+        };
     }
 
     @Override
@@ -58,30 +131,32 @@ public class EmployeeStateMachineConfig extends EnumStateMachineConfigurerAdapte
 
                 //finishing "security check"
                 .withExternal().source(EmployeeState.IN_CHECK).target(EmployeeState.IN_CHECK).event(EmployeeEvent.FINISH_SECURITY_CHECK)
+                .guard(guardOnSecurityCheckFinished())
                 .action(finishSecurityCheck())
                 .and()
 
                 //finishing "work permit check"
                 .withExternal().source(EmployeeState.IN_CHECK).target(EmployeeState.IN_CHECK).event(EmployeeEvent.FINISH_WORK_PERMIT_CHECK)
+                .guard(guardOnWorkPermitFinished())
                 .action(finishWorkPermitCheck())
                 .and()
                 
                 //to APPROVED upon finishing "security check"
-                .withExternal().source(EmployeeState.IN_CHECK).target(EmployeeState.APPROVED) //.event(EmployeeEvent.FINISH_SECURITY_CHECK)
+                .withExternal().source(EmployeeState.IN_CHECK).target(EmployeeState.APPROVED)//.event(EmployeeEvent.FINISH_SECURITY_CHECK)
                 .guard(guardOnAllChecksFinished())
                 .and()
 
                 //to APPROVED upon finishing "work permit check"
-                .withExternal().source(EmployeeState.IN_CHECK).target(EmployeeState.APPROVED) //.event(EmployeeEvent.FINISH_WORK_PERMIT_CHECK)
-                .guard(guardOnAllChecksFinished())
-                .and()
+//                .withExternal().source(EmployeeState.IN_CHECK).target(EmployeeState.APPROVED).event(EmployeeEvent.FINISH_WORK_PERMIT_CHECK)
+//                .guard(guardOnAllChecksFinished())
+//                .and()
 
                 // APPROVED -> ACTIVE
                 .withExternal().source(EmployeeState.APPROVED).target(EmployeeState.ACTIVE).event(EmployeeEvent.ACTIVATE)
         ;
     }
 
-    @Bean
+    @Bean // while entering IN_CHECK from ADDED
     public Action<EmployeeState, EmployeeEvent> startBothChecks() {
         return new Action<EmployeeState, EmployeeEvent>() {
 
@@ -98,28 +173,53 @@ public class EmployeeStateMachineConfig extends EnumStateMachineConfigurerAdapte
         };
     }
 
-    @Bean
+    @Bean // while work permit check (started -> pending verification)
     public Guard<EmployeeState, EmployeeEvent> guardOnWorkPermitPendingVerification() {
         return new Guard<EmployeeState, EmployeeEvent>() {
             @Override
             public boolean evaluate(StateContext<EmployeeState, EmployeeEvent> context) {
 //                return true;
-                System.out.println("Guard on work permit check...");
+                System.out.println("Guard on work permit check to mark it as 'pending'... ");
                 return "started".equals(
                         context.getExtendedState()
                                 .getVariables().get("work permit check state"));
             }
         };
     }
-
-    @Bean
+    @Bean // while security check (started -> finished)
+    public Guard<EmployeeState, EmployeeEvent> guardOnSecurityCheckFinished() {
+        return new Guard<EmployeeState, EmployeeEvent>() {
+            @Override
+            public boolean evaluate(StateContext<EmployeeState, EmployeeEvent> context) {
+//                return true;
+                System.out.println("Guard on security check to mark it as finished... ");
+                return "started".equals(
+                        context.getExtendedState()
+                                .getVariables().get("security check state"));
+            }
+        };
+    }
+    @Bean // while work permit check (pending verification -> finished)
+    public Guard<EmployeeState, EmployeeEvent> guardOnWorkPermitFinished() {
+        return new Guard<EmployeeState, EmployeeEvent>() {
+            @Override
+            public boolean evaluate(StateContext<EmployeeState, EmployeeEvent> context) {
+//                return true;
+                System.out.println("Guard on work permit check to mark it as finished...");
+                return "pending".equals(
+                        context.getExtendedState()
+                                .getVariables().get("work permit check state"));
+            }
+        };
+    }
+    @Bean // while
     public Guard<EmployeeState, EmployeeEvent> guardOnAllChecksFinished() {
         return new Guard<EmployeeState, EmployeeEvent>() {
 
             @Override
             public boolean evaluate(StateContext<EmployeeState, EmployeeEvent> context) {
 //                return true;
-                System.out.println("Guard on SecurityChecks...");
+                System.out.println("Guard on Checks to mark them as finished...");
                 return "done".equals(
                         context.getExtendedState()
                                 .getVariables().get("security check state"))
