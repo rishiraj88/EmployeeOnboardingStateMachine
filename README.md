@@ -1,5 +1,5 @@
 # EmployeeOnboardingStateMachine
-Employee Onboarding with State Machine
+Employee Onboarding with Spring State Machine tooling
 
 ## Tools for Development and Execution
 - Java 17 (JDK 17)
