@@ -20,7 +20,6 @@ import org.springframework.statemachine.listener.StateMachineListener;
 import org.springframework.statemachine.listener.StateMachineListenerAdapter;
 import org.springframework.statemachine.state.State;
 import org.springframework.statemachine.transition.Transition;
-
 import java.util.EnumSet;
 
 @Slf4j

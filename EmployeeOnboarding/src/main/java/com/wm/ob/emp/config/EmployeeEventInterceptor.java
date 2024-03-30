@@ -11,9 +11,7 @@ import org.springframework.statemachine.state.State;
 import org.springframework.statemachine.support.StateMachineInterceptorAdapter;
 import org.springframework.statemachine.transition.Transition;
 import org.springframework.stereotype.Component;
-
 import java.util.Optional;
-
 import static com.wm.ob.emp.data.Constants.EMPLOYEE_EMAIL_ADDRESS;
 
 @Component
