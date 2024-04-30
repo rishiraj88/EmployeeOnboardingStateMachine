@@ -1,5 +1,18 @@
 # EmployeeOnboardingStateMachine
-Employee Onboarding with Spring State Machine tooling
+The compact Human Resource management tool for adding talent to build Superteams!!! A must-have accelerator for modern large-scale enterprises.
+
+## Features
+- Allows for rapid onboarding of people.
+- Reduces error rates (number of data errors per 1000 of persons on-boarded)
+
+## Intented End-Users
+This is a tool for HR personnel in the following functions:
+- Hiring
+- Talent Acquisition
+
+## Suggested Usage Scenarios in Business Functions
+- to manage concurrent hiring of people,
+- concurrent employee on-boarding
 
 ## Tools for Development and Execution
 - Java 17 (JDK 17)
@@ -17,7 +30,7 @@ From within the project root directory, issue the following command:
 ## The API Endpoints
 
 - to add an employee
-POST http://localhost:8080/eob/add
+`POST http://localhost:8080/eob/add
 
 Request Body (JSON) example:
 {"emailAddress":"e004@email.com",
@@ -25,13 +38,13 @@ Request Body (JSON) example:
 "contract":"contract",
 "age":30,
 "state":"ADDED"
-}
-
-- to get employee details
-GET http://localhost:8080/eob/getByEmailAddress?email=e004@email.com
+}`
 
 - to update employee state
-PUT http://localhost:8080/eob/update?email=e004@email.com&event=BEGIN_CHECK
+`PUT http://localhost:8080/eob/update?email=e004@email.com&event=BEGIN_CHECK`
+
+- to get employee details
+`GET http://localhost:8080/eob/getByEmailAddress?email=e004@email.com`
 
 ## Notes
 - A very simple and minimal app has been designed and implemented.
@@ -42,10 +55,12 @@ PUT http://localhost:8080/eob/update?email=e004@email.com&event=BEGIN_CHECK
   - More test cases for Service, especially unhappy scenarios
   - Elaborate OpenAPI documentation
 
-## Contact Points for Feedback and Help
-- rishi.raj.88@gmail.com
-- https://www.linkedin.com/in/rishirajopenminds
-- https://bio.link/rishiraj49de
-- https://github.com/rishiraj88?tab=repositories
-- https://twitter.com/RishiRajDevOps
-- https://hub.docker.com/repository/docker/i50729/employeeonboarding
+## Docker Image
+This project is available to pull as a container image as well. Follow this link for exact details:
+`https://hub.docker.com/repository/docker/i50729/employeeonboarding`
+
+## Contact Points for Feedback, Queries, Collaboration
+- LinkedIn Profile: https://www.linkedin.com/in/rishirajopenminds
+- Contact Card: https://bio.link/rishiraj49de
+- X: https://twitter.com/RishiRajDevOps
+- Other Repositories: https://github.com/rishiraj88?tab=repositories
