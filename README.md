@@ -25,7 +25,7 @@ This is a tool for HR personnel in the following functions:
 ## To Start Docker container
 
 From within the project root directory, issue the following command (`$ ` is prompt, not to type in!):
-<pre>$ docker-compose -f onboarding.yml up`</pre>
+<pre>$ docker-compose -f onboarding.yml up</pre>
 
 ## The API Endpoints
 
@@ -44,7 +44,7 @@ Request Body (JSON) example:
 <pre>PUT http://localhost:8080/eob/update?email=e004@email.com&event=BEGIN_CHECK</pre>
 
 - to get employee details
-<pre>GET http://localhost:8080/eob/getByEmailAddress?email=e004@email.com`</pre>
+<pre>GET http://localhost:8080/eob/getByEmailAddress?email=e004@email.com</pre>
 
 ## Notes
 - A very simple and minimal app has been designed and implemented.
