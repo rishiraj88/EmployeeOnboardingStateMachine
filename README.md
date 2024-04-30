@@ -24,13 +24,13 @@ This is a tool for HR personnel in the following functions:
 
 ## To Start Docker container
 
-From within the project root directory, issue the following command:
-`$ docker-compose -f onboarding.yml up`
+From within the project root directory, issue the following command (`$ ` is prompt, not to type in!):
+<pre>$ docker-compose -f onboarding.yml up`</pre>
 
 ## The API Endpoints
 
 - to add an employee
-`POST http://localhost:8080/eob/add
+<pre>POST http://localhost:8080/eob/add
 
 Request Body (JSON) example:
 {"emailAddress":"e004@email.com",
@@ -38,13 +38,13 @@ Request Body (JSON) example:
 "contract":"contract",
 "age":30,
 "state":"ADDED"
-}`
+}</pre>
 
 - to update employee state
-`PUT http://localhost:8080/eob/update?email=e004@email.com&event=BEGIN_CHECK`
+<pre>PUT http://localhost:8080/eob/update?email=e004@email.com&event=BEGIN_CHECK</pre>
 
 - to get employee details
-`GET http://localhost:8080/eob/getByEmailAddress?email=e004@email.com`
+<pre>GET http://localhost:8080/eob/getByEmailAddress?email=e004@email.com`</pre>
 
 ## Notes
 - A very simple and minimal app has been designed and implemented.
@@ -57,7 +57,7 @@ Request Body (JSON) example:
 
 ## Docker Image
 This project is available to pull as a container image as well. Follow this link for exact details:
-`https://hub.docker.com/repository/docker/i50729/employeeonboarding`
+<pre>https://hub.docker.com/repository/docker/i50729/employeeonboarding</pre>
 
 ## Contact Points for Feedback, Queries, Collaboration
 - LinkedIn Profile: https://www.linkedin.com/in/rishirajopenminds
