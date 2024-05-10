@@ -1,4 +1,4 @@
-# EmployeeOnboardingStateMachine
+# Employee Onboarding State Machine
 The compact Human Resource management tool for adding talent to build Superteams!!! A must-have accelerator for modern large-scale enterprises.
 
 ## Features
