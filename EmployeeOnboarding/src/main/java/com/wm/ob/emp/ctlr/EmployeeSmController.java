@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("eob/")
+@RequestMapping("eob/api/")
 public class EmployeeSmController {
     @Autowired
     private EmployeeSmService employeeSmService;
