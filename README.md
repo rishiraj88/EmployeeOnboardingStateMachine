@@ -1,25 +1,27 @@
 # Employee Onboarding State Machine
-The compact Human Resource management tool for adding talent to build Superteams!!! A must-have accelerator for modern large-scale enterprises.
+The smart Human Resource management tool for raising talent building Superteams!!! A must-have accelerator for modern large-scale enterprises.
 
 ## Features
 - Allows for rapid onboarding of people.
-- Reduces error rates (number of data errors per 1000 of persons on-boarded)
+- Reduces error rates (number of data errors per 1000 of persons onboarded).
 
-## Intented End-Users
-This is a tool for HR personnel in the following functions:
-- Hiring
-- Talent Acquisition
+## Targeted End-Users
+This is a great tool for the HR personnel, who are responsible for the following functions:
+- Talent Acquisition (Headhunting)
+- Hiring (the process of registering and joining)
+- Eymployee Onboarding (additional formalities post the joining process, such as orientation)
 
 ## Suggested Usage Scenarios in Business Functions
-- to manage concurrent hiring of people,
-- concurrent employee on-boarding
+- to manage concurrent hiring (simultaneous) of people,
+- concurrent employee onboarding
 
 ## Tools for Development and Execution
 - Java 17 (JDK 17)
-- Spring Boot
 - Spring StateMachine
+- Spring Boot
 - Lombok
 - JUnit 5
+- SpringBootTest
 - Docker with docker-compose
 
 ## To Start Docker container
