@@ -1,5 +1,5 @@
-# Employee Onboarding State Machine
-The compact Human Resource management tool for adding talent to build Superteams!!! A must-have accelerator for modern large-scale enterprises.
+# Employee Onboarding BPM Tool
+The compact Human Resource Management (HRM) tool for adding talent to build Superteams!!! A modern-age accelerator for large-scale enterprises.
 
 ## Features
 - Allows for rapid onboarding of people.
