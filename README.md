@@ -3,32 +3,30 @@ The compact Human Resource Management (HRM) tool for adding talent to build Supe
 
 ## Features
 - Allows for rapid onboarding of people.
-- Reduces error rates (number of data errors per 1000 of persons on-boarded)
+- Reduces error rates (number of data errors per 1000 of persons onboarded)
 
 ## Intented End-Users
 This is a tool for HR personnel in the following functions:
 - Hiring
 - Talent Acquisition
 
-## Suggested Usage Scenarios in Business Functions
-- to manage concurrent hiring of people,
+## Suggested Usage Scenarios in Business
+- to manage concurrent hiring of people
 - concurrent employee on-boarding
 
 ## Tools for Development and Execution
 - Java 17 (JDK 17)
-- Spring Boot
+- Spring Boot 3
 - Spring StateMachine
 - Lombok
 - JUnit 5
 - Docker with docker-compose
 
 ## To Start Docker container
-
 From within the project root directory, issue the following command (`$ ` is prompt, not to type in!):
 <pre>$ docker-compose -f onboarding.yml up</pre>
 
 ## The API Endpoints
-
 - to add an employee
 <pre>POST http://localhost:8080/eob/add
 
