@@ -1,11 +1,11 @@
 # Employee Onboarding BPM Tool
-The compact Human Resource Management (HRM) tool for adding talent to build Superteams!!! A modern-age accelerator for large-scale enterprises.
+The compact Human Resource Management (HRM) tool for adding talent to build Superteams. A modern-age accelerator for large-scale enterprises.
 
 ## Features
 - Allows for rapid onboarding of people.
 - Reduces error rates (number of data errors per 1000 of persons onboarded)
 
-## Intented End-Users
+## Target Users
 This is a tool for HR personnel in the following functions:
 - Hiring
 - Talent Acquisition
