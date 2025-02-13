@@ -4,9 +4,6 @@ import com.wm.ob.emp.sm.EmployeeState;
 import lombok.*;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @ToString
 public class Employee {
     String emailAddress; // used as identifier. Enough for simpler system designs

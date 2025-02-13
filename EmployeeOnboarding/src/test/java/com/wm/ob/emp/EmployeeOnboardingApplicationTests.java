@@ -1,6 +1,6 @@
 package com.wm.ob.emp;
 
-import com.wm.ob.emp.data.EmployeeDataRepo;
+import com.wm.ob.emp.dao.EmployeeRepo;
 import com.wm.ob.emp.entity.Employee;
 import com.wm.ob.emp.sm.EmployeeEvent;
 import com.wm.ob.emp.sm.EmployeeState;
@@ -22,11 +22,10 @@ class EmployeeOnboardingApplicationTests {
     EmployeeSmService employeeSmService;
 
     @Autowired
-    EmployeeDataRepo employeeDataRepo;
+    EmployeeRepo employeeDataRepo;
 
     @Test
     void contextLoads() {}
-
 
     @BeforeEach
     private void setUp() {

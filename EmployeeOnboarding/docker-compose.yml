@@ -1,0 +1,6 @@
+services:
+  employeeonboarding:
+    build: .
+    container_name: employeeonboarding
+    ports:
+      - "8080:8080"
