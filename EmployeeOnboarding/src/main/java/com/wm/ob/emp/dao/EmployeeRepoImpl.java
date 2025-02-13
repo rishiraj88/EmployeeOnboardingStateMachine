@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class EmployeeDataRepoImpl implements EmployeeDataRepo {
+public class EmployeeRepoImpl implements EmployeeRepo {
     private Map<String, Employee> employees = new HashMap<>();
     public Map<String, Employee> getEmployees() {
         return employees;

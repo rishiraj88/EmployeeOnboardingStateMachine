@@ -1,7 +1,7 @@
 package com.wm.ob.emp.svc;
 
 import com.wm.ob.emp.config.EmployeeEventInterceptor;
-import com.wm.ob.emp.dao.EmployeeDataRepo;
+import com.wm.ob.emp.dao.EmployeeRepo;
 import com.wm.ob.emp.entity.Employee;
 import com.wm.ob.emp.sm.EmployeeEvent;
 import com.wm.ob.emp.sm.EmployeeState;
@@ -29,7 +29,7 @@ public class EmployeeSmService {
     private StateMachine<EmployeeState,EmployeeEvent> stateMachine;
 
     @Autowired
-    private EmployeeDataRepo employeeDataRepo;
+    private EmployeeRepo employeeDataRepo;
 
     @Transactional
     public StateMachine<EmployeeState,EmployeeEvent>  addEmployee(Employee employee) {

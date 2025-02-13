@@ -1,6 +1,6 @@
 package com.wm.ob.emp.config;
 
-import com.wm.ob.emp.dao.EmployeeDataRepo;
+import com.wm.ob.emp.dao.EmployeeRepo;
 import com.wm.ob.emp.entity.Employee;
 import com.wm.ob.emp.sm.EmployeeEvent;
 import com.wm.ob.emp.sm.EmployeeState;
@@ -19,7 +19,7 @@ import static com.wm.ob.emp.common.Constants.EMPLOYEE_EMAIL_ADDRESS;
 public class EmployeeEventInterceptor extends StateMachineInterceptorAdapter<EmployeeState, EmployeeEvent> {
 
     @Autowired
-    EmployeeDataRepo employeeDataRepo;
+    EmployeeRepo employeeDataRepo;
 
     @Override
     public void preStateChange(State<EmployeeState, EmployeeEvent> state, Message<EmployeeEvent> message, Transition<EmployeeState, EmployeeEvent> transition,
@@ -32,7 +32,6 @@ public class EmployeeEventInterceptor extends StateMachineInterceptorAdapter<Emp
                                 emp.setState(state.getId());
                             });
                 }
-
         );
     }
 }

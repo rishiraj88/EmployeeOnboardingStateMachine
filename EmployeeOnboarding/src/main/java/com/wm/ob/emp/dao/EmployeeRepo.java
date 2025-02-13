@@ -4,6 +4,6 @@ import com.wm.ob.emp.entity.Employee;
 
 import java.util.Map;
 
-public interface EmployeeDataRepo {
+public interface EmployeeRepo {
     public Map<String, Employee> getEmployees();
 }
