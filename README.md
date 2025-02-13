@@ -17,6 +17,7 @@ This is a great tool for the HR personnel, who are responsible for the following
 
 ## Tools for Development and Execution
 - Java 17 (JDK 17)
+- Spring Boot 3
 - Spring StateMachine
 - Spring Boot
 - Lombok
@@ -25,12 +26,10 @@ This is a great tool for the HR personnel, who are responsible for the following
 - Docker with docker-compose
 
 ## To Start Docker container
-
 From within the project root directory, issue the following command (`$ ` is prompt, not to type in!):
 <pre>$ docker-compose -f onboarding.yml up</pre>
 
 ## The API Endpoints
-
 - to add an employee
 <pre>POST http://localhost:8080/eob/add
 
