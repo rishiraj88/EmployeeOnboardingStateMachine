@@ -1,6 +1,6 @@
 package com.wm.ob.emp.config;
 
-import com.wm.ob.emp.data.EmployeeDataRepo;
+import com.wm.ob.emp.dao.EmployeeDataRepo;
 import com.wm.ob.emp.entity.Employee;
 import com.wm.ob.emp.sm.EmployeeEvent;
 import com.wm.ob.emp.sm.EmployeeState;
@@ -12,7 +12,8 @@ import org.springframework.statemachine.support.StateMachineInterceptorAdapter;
 import org.springframework.statemachine.transition.Transition;
 import org.springframework.stereotype.Component;
 import java.util.Optional;
-import static com.wm.ob.emp.data.Constants.EMPLOYEE_EMAIL_ADDRESS;
+
+import static com.wm.ob.emp.common.Constants.EMPLOYEE_EMAIL_ADDRESS;
 
 @Component
 public class EmployeeEventInterceptor extends StateMachineInterceptorAdapter<EmployeeState, EmployeeEvent> {

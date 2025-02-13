@@ -1,7 +1,7 @@
 package com.wm.ob.emp.svc;
 
 import com.wm.ob.emp.config.EmployeeEventInterceptor;
-import com.wm.ob.emp.data.EmployeeDataRepo;
+import com.wm.ob.emp.dao.EmployeeDataRepo;
 import com.wm.ob.emp.entity.Employee;
 import com.wm.ob.emp.sm.EmployeeEvent;
 import com.wm.ob.emp.sm.EmployeeState;
@@ -14,8 +14,8 @@ import org.springframework.statemachine.support.DefaultStateMachineContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.wm.ob.emp.data.Constants.EMPLOYEE;
-import static com.wm.ob.emp.data.Constants.EMPLOYEE_EMAIL_ADDRESS;
+import static com.wm.ob.emp.common.Constants.EMPLOYEE;
+import static com.wm.ob.emp.common.Constants.EMPLOYEE_EMAIL_ADDRESS;
 
 @Service
 public class EmployeeSmService {
