@@ -1,5 +1,6 @@
 services:
   employeeonboarding:
-    image: i50729/employeeonboarding:0.0.1-SNAPSHOT
+    build: .
+    container_name: employeeonboarding
     ports:
-      - 8080:8080
+      - "8080:8080"
