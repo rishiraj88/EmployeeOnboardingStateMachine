@@ -1,10 +1,11 @@
 # Employee Onboarding State Machine
-The smart Human Resource Management System (HRMS) for adding more telent and velocity to Superteams. A must-have accelerator for modern large-scale enterprises.
+As a crucial HR Personnel function of HCM (Human Capital Management), this smart Human Resource Management System (HRMS) promises to assist leading firms with digitalization of adding more telent and velocity to their multinational teams. A must-have accelerator for modern large-scale enterprises as well as fast-growing startups.
 
 ## Salient Features
 - Provision for highly concurrent execution of frequent functionalities.
-- Allows for rapid onboarding of members.
-- Reduces error rates (number of data errors per 1000 of persons onboarded).
+- Allows for rapid onboarding of members, as part of a unified ERP solution.
+- Reduces error rates (number of data errors per 1000 of persons onboarded) against manual undertaking of the functions.
+- Flexible for minor variations and open for extention with more ERP functionalities.
 
 ## Targeted Users and Functional Areas
 This is a great tool for the People and Culture (P&C Team), who undertake the following functions:

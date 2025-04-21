@@ -13,7 +13,7 @@ RUN mkdir target
 
 LABEL maintainer="Rishi Raj"
 LABEL version="1.0"
-LABEL description="Dockerfile for Employee Onboarding app with JDK 21"
+LABEL description="Dockerfile for ERP=>HCM=>EmployeeOnboarding, implemented with Spring Boot 3 and test automation"
 
 COPY --from=build /app/target/employeeonboarding-1.0.1-SNAPSHOT.jar /app/target/
 EXPOSE 8080
