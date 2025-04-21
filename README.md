@@ -25,6 +25,9 @@ This is a great tool for the People and Culture (P&C Team), who undertake the fo
 - SpringBootTest
 - Dockerfile with docker-compose
 
+## Automated Test Result Summary
+![Test automation summary](./assets/img/tests-passed.png)
+
 ## To Start Docker Container
 From within the project root directory, issue the following command (`$ ` is the Terminal prompt, not for any user to type in!):
 <pre>$ docker-compose up</pre>
