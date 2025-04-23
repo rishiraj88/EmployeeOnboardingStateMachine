@@ -1,33 +1,32 @@
 package com.wm.ob.emp.controller;
 
 import com.wm.ob.emp.entity.Employee;
-import com.wm.ob.emp.sm.EmployeeEvent;
-import com.wm.ob.emp.svc.EmployeeSmService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.wm.ob.emp.entity.enums.EmployeeEvent;
+import com.wm.ob.emp.svc.EmployeeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController @RequiredArgsConstructor
 @RequestMapping("api/v1/eob")
 public class EmployeeController {
-    @Autowired
-    private EmployeeSmService employeeSmService;
+    private final EmployeeService employeeService;
 
-    // An Endpoint to add an employee
+    // Endpoint to add an employee
     @PostMapping()
     public void addEmployee(@RequestBody Employee employee) {
-        employeeSmService.addEmployee(employee);
+        employeeService.addEmployee(employee);
     }
 
-    //An Endpoint to change the state of a given employee according to the state machine rules
+    // Endpoint to change the state of a given employee according to the rules of tenant (organisation)
     @PutMapping()
-    public void UpdateEmployee(@RequestParam("email") String emailAddress, @RequestParam("event") String eventValue) {
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.valueOf(eventValue));
+    public void updateEmployee(@RequestParam("email") String emailAddress, @RequestParam("event") String eventValue) {
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.valueOf(eventValue));
     }
 
-    //An Endpoint to fetch employee details
+    // Endpoint to fetch employee details
     @GetMapping()
     public Employee getEmployeeDetails(@RequestParam("email") String emailAddress) {
-        return employeeSmService.getEmployeeDetails(emailAddress);
+        return employeeService.getEmployeeDetails(emailAddress);
     }
 
 }

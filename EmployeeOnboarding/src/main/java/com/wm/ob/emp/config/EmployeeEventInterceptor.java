@@ -2,8 +2,8 @@ package com.wm.ob.emp.config;
 
 import com.wm.ob.emp.dao.EmployeeRepo;
 import com.wm.ob.emp.entity.Employee;
-import com.wm.ob.emp.sm.EmployeeEvent;
-import com.wm.ob.emp.sm.EmployeeState;
+import com.wm.ob.emp.entity.enums.EmployeeEvent;
+import com.wm.ob.emp.entity.enums.EmployeeState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.statemachine.StateMachine;
@@ -19,7 +19,7 @@ import static com.wm.ob.emp.common.Constants.EMPLOYEE_EMAIL_ADDRESS;
 public class EmployeeEventInterceptor extends StateMachineInterceptorAdapter<EmployeeState, EmployeeEvent> {
 
     @Autowired
-    EmployeeRepo employeeDataRepo;
+    EmployeeRepo employeeRepo;
 
     @Override
     public void preStateChange(State<EmployeeState, EmployeeEvent> state, Message<EmployeeEvent> message, Transition<EmployeeState, EmployeeEvent> transition,
@@ -28,8 +28,8 @@ public class EmployeeEventInterceptor extends StateMachineInterceptorAdapter<Emp
         Optional.ofNullable(message).ifPresent(msg -> {
                     Optional.ofNullable(String.class.cast(msg.getHeaders().getOrDefault(EMPLOYEE_EMAIL_ADDRESS, "e@email.com")))
                             .ifPresent(emailAddr -> {
-                                Employee emp = employeeDataRepo.getEmployees().get(emailAddr);
-                                emp.setState(state.getId());
+                                Employee emp = employeeRepo.getEmployees().get(emailAddr);
+                                emp.setState((com.wm.ob.emp.entity.enums.EmployeeState) state.getId());
                             });
                 }
         );

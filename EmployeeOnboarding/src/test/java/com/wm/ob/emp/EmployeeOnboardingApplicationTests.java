@@ -2,9 +2,10 @@ package com.wm.ob.emp;
 
 import com.wm.ob.emp.dao.EmployeeRepo;
 import com.wm.ob.emp.entity.Employee;
-import com.wm.ob.emp.sm.EmployeeEvent;
-import com.wm.ob.emp.sm.EmployeeState;
-import com.wm.ob.emp.svc.EmployeeSmService;
+import com.wm.ob.emp.entity.enums.EmployeeEvent;
+import com.wm.ob.emp.entity.enums.EmployeeState;
+import com.wm.ob.emp.svc.EmployeeService;
+import com.wm.ob.emp.svc.StateMachineService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -19,8 +20,10 @@ import org.springframework.statemachine.StateMachine;
 class EmployeeOnboardingApplicationTests {
 
     @Autowired
-    EmployeeSmService employeeSmService;
+    EmployeeService employeeService;
 
+    @Autowired
+    StateMachineService stateMachineService;
     @Autowired
     EmployeeRepo employeeDataRepo;
 
@@ -29,12 +32,12 @@ class EmployeeOnboardingApplicationTests {
 
     @BeforeEach
     private void setUp() {
-        employeeSmService.setStateMachine(null);
+        employeeService.setEmployeeStateMachine(null);
     }
     @AfterEach
     private void tearDown() {
-        if(null != employeeSmService.getStateMachine())
-            employeeSmService.getStateMachine().stopReactively();
+        if(null != stateMachineService.getStateMachine())
+            stateMachineService.getStateMachine().stopReactively();
     }
     // ******* Happy Scenarios ******* //
 	/*
@@ -50,17 +53,17 @@ class EmployeeOnboardingApplicationTests {
     void returnsActiveEmployee01() throws Exception {
         String emailAddress = "e001@email.com";
         Employee emp = new Employee(emailAddress);
-        employeeSmService.addEmployee(emp);
+        employeeService.addEmployee(emp);
 
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.COMPLETE_INITIAL_WORK_PERMIT_CHECK);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.COMPLETE_INITIAL_WORK_PERMIT_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_WORK_PERMIT_CHECK);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_WORK_PERMIT_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.ACTIVATE);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.ACTIVATE);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
 
         Assertions.assertEquals(EmployeeState.ACTIVE, employeeDataRepo.getEmployees().get(emailAddress).getState());
@@ -79,17 +82,17 @@ class EmployeeOnboardingApplicationTests {
  void returnsActiveEmployee02() throws Exception {
      String emailAddress = "e002@email.com";
      Employee emp = new Employee(emailAddress);
-     employeeSmService.addEmployee(emp);
+     employeeService.addEmployee(emp);
 
-     employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
+     employeeService.updateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
      log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-     employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.COMPLETE_INITIAL_WORK_PERMIT_CHECK);
+     employeeService.updateEmployee(emailAddress, EmployeeEvent.COMPLETE_INITIAL_WORK_PERMIT_CHECK);
      log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-     employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_WORK_PERMIT_CHECK);
+     employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_WORK_PERMIT_CHECK);
      log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-     employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
+     employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
      log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-     employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.ACTIVATE);
+     employeeService.updateEmployee(emailAddress, EmployeeEvent.ACTIVATE);
      log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
 
      Assertions.assertEquals(EmployeeState.ACTIVE, employeeDataRepo.getEmployees().get(emailAddress).getState());
@@ -109,17 +112,17 @@ class EmployeeOnboardingApplicationTests {
 void returnsActiveEmployee03() throws Exception {
     String emailAddress = "e003@email.com";
     Employee emp = new Employee(emailAddress);
-    employeeSmService.addEmployee(emp);
+    employeeService.addEmployee(emp);
 
-    employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
+    employeeService.updateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
     log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-    employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.COMPLETE_INITIAL_WORK_PERMIT_CHECK);
+    employeeService.updateEmployee(emailAddress, EmployeeEvent.COMPLETE_INITIAL_WORK_PERMIT_CHECK);
     log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-    employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
+    employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
     log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-    employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_WORK_PERMIT_CHECK);
+    employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_WORK_PERMIT_CHECK);
     log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-    employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.ACTIVATE);
+    employeeService.updateEmployee(emailAddress, EmployeeEvent.ACTIVATE);
     log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
 
     Assertions.assertEquals(EmployeeState.ACTIVE, employeeDataRepo.getEmployees().get(emailAddress).getState());
@@ -138,13 +141,13 @@ void returnsActiveEmployee03() throws Exception {
     void deniesTransition01() throws Exception {
         String emailAddress = "e011@email.com";
         Employee emp = new Employee(emailAddress);
-        employeeSmService.addEmployee(emp);
+        employeeService.addEmployee(emp);
 
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.ACTIVATE);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.ACTIVATE);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
 
         Assertions.assertNotEquals(EmployeeState.ACTIVE, employeeDataRepo.getEmployees().get(emailAddress).getState());
@@ -162,14 +165,14 @@ void returnsActiveEmployee03() throws Exception {
     void deniesTransition02() throws Exception {
         String emailAddress = "e011@email.com";
         Employee emp = new Employee(emailAddress);
-        employeeSmService.addEmployee(emp);
+        employeeService.addEmployee(emp);
 
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.BEGIN_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
-        employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
+        employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_SECURITY_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
         StateMachine<EmployeeState,EmployeeEvent> stateMachine =
-                employeeSmService.UpdateEmployee(emailAddress, EmployeeEvent.FINISH_WORK_PERMIT_CHECK);
+                employeeService.updateEmployee(emailAddress, EmployeeEvent.FINISH_WORK_PERMIT_CHECK);
         log.debug("Emp: " + employeeDataRepo.getEmployees().get(emailAddress).getState());
 
         Assertions.assertNotEquals("done",stateMachine.getExtendedState().getVariables().get("work permit check state"));
