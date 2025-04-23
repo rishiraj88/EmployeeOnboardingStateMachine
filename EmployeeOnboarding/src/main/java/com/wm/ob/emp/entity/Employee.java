@@ -1,10 +1,9 @@
 package com.wm.ob.emp.entity;
 
-import com.wm.ob.emp.sm.EmployeeState;
-import lombok.*;
+import com.wm.ob.emp.entity.enums.EmployeeState;
+import lombok.Data;
 
 @Data
-@ToString
 public class Employee {
     String emailAddress; // used as identifier. Enough for simpler system designs
     String name;

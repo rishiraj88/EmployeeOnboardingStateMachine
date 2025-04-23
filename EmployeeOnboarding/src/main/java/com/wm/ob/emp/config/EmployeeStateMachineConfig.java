@@ -1,7 +1,7 @@
 package com.wm.ob.emp.config;
 
-import com.wm.ob.emp.sm.EmployeeEvent;
-import com.wm.ob.emp.sm.EmployeeState;
+import com.wm.ob.emp.entity.enums.EmployeeEvent;
+import com.wm.ob.emp.entity.enums.EmployeeState;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
