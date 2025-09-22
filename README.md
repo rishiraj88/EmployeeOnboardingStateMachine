@@ -1,5 +1,5 @@
-# Employee Onboarding Workflow for HXM/HCM (ERP)
-As a crucial HR Personnel function of HCM (Human Capital Management), this smart Human Resource Management System (HRMS) promises to assist leading firms with digitalization of adding more telent and velocity to their multinational teams. A must-have accelerator for modern large-scale enterprises as well as fast-growing startups.
+# Employee Onboarding/ HRM Scheduling for HXM/HCM/HRM (ERP)
+As a crucial HR Personnel Workflow of HCM (Human Capital Management), this smart Human Resource Management System (HRMS) promises to assist leading firms with digitalization of adding more telent and velocity to their multinational teams. A must-have accelerator for modern large-scale enterprises as well as fast-growing startups.
 
 ## Salient Features
 - Provision for highly concurrent execution of frequent functionalities.
