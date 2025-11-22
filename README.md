@@ -1,4 +1,4 @@
-#  ERP: Employee Onboarding (HXM/HCM/HRM Scheduling)
+#  ERP: Employee Onboarding (HXM/HCM/HRM Process Modelling)
 As a crucial HR Personnel Workflow of HCM (Human Capital Management), this smart Human Resource Management System (HRMS) promises to assist leading firms with digitalization of adding more telent and velocity to their multinational teams. A must-have accelerator for modern large-scale enterprises as well as fast-growing startups.
 
 ## Salient Features
