@@ -1,5 +1,5 @@
 # Employee Onboarding - HCM (ERP)
-As a crucial HR Personnel function of HCM (Human Capital Management), this smart Human Resource Management System (HRMS) promises to assist leading firms with digitalization of adding more telent and velocity to their multinational teams. A must-have accelerator for modern large-scale enterprises as well as fast-growing startups.
+As a crucial HR Personnel function of HCM (Human Capital Management), this smart Human Resource Management System (HRMS) promises to assist leading firms today with digitalization of adding more telent and velocity to their multinational teams. A must-have accelerator for modern large-scale enterprises as well as fast-growing startups.
 
 ## Salient Features
 - Provision for highly concurrent execution of frequent functionalities.
@@ -66,6 +66,5 @@ This project is available to pull as a container image as well. Follow this link
 
 ## Contact Points for Feedback, Queries, Collaboration
 - LinkedIn Profile: https://www.linkedin.com/in/rishirajopenminds
-- Contact Card: https://bio.link/rishiraj49de
-- X: https://twitter.com/RishiRajDevOps
-- Other Repositories: https://github.com/rishiraj88?tab=repositories
+- X: https://x.com/RishiRajDevOps
+- Other Repositories: https://github.com/rishiraj88
