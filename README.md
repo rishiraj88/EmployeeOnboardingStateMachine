@@ -53,12 +53,14 @@ Request Body (JSON) example:
 
 ## Notes
 - A lighweight app, with very small footprint, has been designed and implemented. For green programming and sustainability.
-- The app showcases transitions across various stages of employer-employee relationship.
-- To minimise the cost in terms of development effort and time, the following technical requirements have not been implemented in ths MVP/PoC release:
+- The app showcases transitions across various stages of employer-employee relationship, especially encompassing onboarding. More processes and stages of "employee lifecycle" may easily be incorporated in this application.
+- 
+- To cater to PoC style of reference implementation, the following technical requirements have not been implemented in ths release:
   - ResponseEntity in Controller
   - Test cases for Controller
   - More test cases for Service, especially unhappy scenarios
   - Vast OpenAPI documentation
+  - Use of AI tooling
 
 ## Docker Image
 This project is available to pull as a container image as well. Follow this link for exact details:
